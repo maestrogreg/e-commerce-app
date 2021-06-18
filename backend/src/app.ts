@@ -1,6 +1,11 @@
 import express, {Request, Response} from 'express';
-import data from './data/products'
+import connectDB from './database/connection';
+import dotenv from 'dotenv';
+import data from './data/products';
 
+dotenv.config();
+
+connectDB();
 const app = express();
 
 app.get('/',(req: Request, res: Response)=>{
@@ -16,5 +21,5 @@ app.get('/product/:id', (req: Request, res: Response)=>{
     let value = data.find(item=> item._id === req.params.id);
     res.json(value);
 })
-
-app.listen(5000,()=>console.log(`server running on port http://localhost:5000`))
+const PORT = process.env.PORT || 5000
+app.listen(PORT,()=>console.log(`server running in ${process.env.NODE_ENV} mode on port http://localhost:${PORT}`))
