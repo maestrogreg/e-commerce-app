@@ -4,3 +4,17 @@ main{
 .linky{
   text-decoration: none;
 }
+.linky:hover{
+  text-decoration:underline;
+}
+.rating span{
+  margin:  0.1rem;
+}
+h3{
+  padding: 1rem 0;
+}
+.details{
+  margin-top:  1rem;
+  margin-bottom:  3rem;
+  font-size: 0.8rem;
+}
