@@ -11,6 +11,7 @@ app.get('/products',(req: Request, res: Response)=>{
     res.json(data)
 })
 
+
 app.get('/product/:id', (req: Request, res: Response)=>{
     let value = data.find(item=> item._id === req.params.id);
     res.json(value);
