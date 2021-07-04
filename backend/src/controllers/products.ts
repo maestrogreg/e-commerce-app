@@ -23,7 +23,7 @@ export const getProduct = async(req:Request, res:Response)=>{
         }
 
         
-    }catch(err){
-        res.status(400).json({status:"error", err: err.message});
+    }catch(error){
+        res.status(400).json({status:"error", error: error.message});
     }
 }
