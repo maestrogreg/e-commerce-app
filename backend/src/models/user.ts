@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import { NextFunction } from 'express';
+import bcrypt from 'bcryptjs';
+
 
 const user = new mongoose.Schema({
     name: {
@@ -21,6 +24,14 @@ const user = new mongoose.Schema({
     }
 },{
     timestamps: true
+})
+
+user.pre('save', async function(this: any, next){
+    if(!this.isModified('password')){
+        next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
 })
 
 const userModel = mongoose.model('user', user);
